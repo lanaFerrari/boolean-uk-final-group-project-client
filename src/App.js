@@ -3,11 +3,11 @@ import { Route, Switch } from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
 import Home from "./Pages/Home";
-import LoginForm from "./Pages/Login Form";
-import ProjectDetails from "./Pages/Project Details";
-import UserHome from "./Pages/User Home";
-import UserProjectForm from "./Pages/User Prjct Form";
-import UserProjects from "./Pages/User Projects";
+import LoginForm from "./Pages/LoginForm";
+import ProjectDetails from "./Pages/ProjectDetails";
+import UserHome from "./Pages/UserHome";
+import UserProjectForm from "./Pages/UserProjectForm";
+import UserProjects from "./Pages/UserProjects";
 
 function App() {
   return (
