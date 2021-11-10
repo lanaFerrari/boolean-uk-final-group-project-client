@@ -14,6 +14,7 @@ import Footer from "./Pages/Components/Footer";
 function App() {
   //Saving projects data
   const [projects, setProjects] = useState([]);
+  const [users, setUsers] = useState([]);
 
   //Get all projects
   useEffect(() => {
@@ -22,6 +23,15 @@ function App() {
       .then((res) => res.json())
       .then((Data) => {
         setProjects(Data);
+      });
+  }, []);
+
+  useEffect(() => {
+    const url = `${process.env.REACT_APP_API_URL}/projects`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((usersData) => {
+        setUsers(usersData);
       });
   }, []);
 
