@@ -1,6 +1,4 @@
-export default function Main(props) {
-  const { projects } = props;
-  console.log(projects);
+export default function Main(projects) {
   return (
     <>
       <p>Main</p>
