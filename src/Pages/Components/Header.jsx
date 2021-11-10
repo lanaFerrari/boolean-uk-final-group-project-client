@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <>
+    <header>
       <p>Create Project</p>
       <p>Boolean</p>
       <p>Log in</p>
@@ -9,6 +9,6 @@ export default function Header() {
         <input type="text" name="search" id="search" value="" />{" "}
         <input type="submit" name="submit" value="Search" />{" "}
       </form>
-    </>
+    </header>
   );
 }

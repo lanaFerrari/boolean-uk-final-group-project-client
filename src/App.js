@@ -8,6 +8,8 @@ import ProjectDetails from "./Pages/ProjectDetails";
 import UserHome from "./Pages/UserHome";
 import UserProjectForm from "./Pages/UserProjectForm";
 import UserProjects from "./Pages/UserProjects";
+import Header from "./Pages/Components/Header";
+import Footer from "./Pages/Components/Footer";
 
 function App() {
   //Saving projects data
@@ -24,26 +26,30 @@ function App() {
   }, []);
 
   return (
-    <Switch>
-      <Route exact path="/">
-        <Home projects={projects} />
-      </Route>
-      <Route path="/login" exact>
-        <LoginForm />
-      </Route>
-      <Route exact path="/project/:id/:name">
-        <ProjectDetails />
-      </Route>
-      <Route path="/:userName" exact>
-        <UserHome />
-      </Route>
-      <Route path="/:userName/create-project" exact>
-        <UserProjectForm />
-      </Route>
-      <Route path="/:userName/myProjects" exact>
-        <UserProjects />
-      </Route>
-    </Switch>
+    <>
+      <Header />
+      <Switch>
+        <Route exact path="/">
+          <Home projects={projects} />
+        </Route>
+        <Route path="/login" exact>
+          <LoginForm />
+        </Route>
+        <Route exact path="/projects/:id/:title">
+          <ProjectDetails />
+        </Route>
+        <Route path="/:userName" exact>
+          <UserHome />
+        </Route>
+        <Route path="/:userName/create-project" exact>
+          <UserProjectForm />
+        </Route>
+        <Route path="/:userName/myProjects" exact>
+          <UserProjects />
+        </Route>
+      </Switch>
+      <Footer />
+    </>
   );
 }
 
