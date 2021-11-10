@@ -1,24 +1,36 @@
+import { useEffect, useState } from "react";
+import { Route, Switch } from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
+import Home from "./Pages/Home";
+import LoginForm from "./Pages/LoginForm";
+import ProjectDetails from "./Pages/ProjectDetails";
+import UserHome from "./Pages/UserHome";
+import UserProjectForm from "./Pages/UserProjectForm";
+import UserProjects from "./Pages/UserProjects";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route path="/login" exact>
+        <LoginForm />
+      </Route>
+      <Route exact path="/project/:id/:name">
+        <ProjectDetails />
+      </Route>
+      <Route path="/:userName" exact>
+        <UserHome />
+      </Route>
+      <Route path="/:userName/create-project" exact>
+        <UserProjectForm />
+      </Route>
+      <Route path="/:userName/myProjects" exact>
+        <UserProjects />
+      </Route>
+    </Switch>
   );
 }
 
