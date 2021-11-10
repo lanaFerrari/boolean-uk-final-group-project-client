@@ -26,7 +26,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const url = `${process.env.REACT_APP_API_URL}/projects`;
+    const url = `${process.env.REACT_APP_API_URL}/users`;
     fetch(url)
       .then((res) => res.json())
       .then((usersData) => {
