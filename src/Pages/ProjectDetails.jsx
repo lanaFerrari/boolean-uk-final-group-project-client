@@ -5,7 +5,6 @@ export default function ProjectDetails() {
   const history = useHistory();
   const { id, title } = useParams();
   const tragetId = +id;
-  console.log("id: ", typeof id);
   const [project, setProject] = useState(null);
 
   useEffect(() => {
@@ -13,7 +12,6 @@ export default function ProjectDetails() {
     fetch(url)
       .then((res) => res.json())
       .then((projectData) => {
-        console.log("project: ", projectData);
         setProject(projectData);
       });
   }, [tragetId]);
