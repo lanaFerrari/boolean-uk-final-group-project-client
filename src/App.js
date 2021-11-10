@@ -15,7 +15,7 @@ function App() {
 
   //Get all projects
   useEffect(() => {
-    const url = `http://localhost:3030/projects`;
+    const url = `${process.env.REACT_APP_API_URL}/projects`;
     fetch(url)
       .then((res) => res.json())
       .then((Data) => {
