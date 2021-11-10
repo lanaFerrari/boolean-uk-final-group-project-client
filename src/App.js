@@ -10,10 +10,23 @@ import UserProjectForm from "./Pages/UserProjectForm";
 import UserProjects from "./Pages/UserProjects";
 
 function App() {
+  //Saving projects data
+  const [projects, setProjects] = useState([]);
+
+  //Get all projects
+  useEffect(() => {
+    const url = `http://localhost:3030/projects`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((Data) => {
+        setProjects(Data);
+      });
+  }, []);
+
   return (
     <Switch>
       <Route exact path="/">
-        <Home />
+        <Home projects={projects} />
       </Route>
       <Route path="/login" exact>
         <LoginForm />
