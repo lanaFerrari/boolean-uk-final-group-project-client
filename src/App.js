@@ -21,8 +21,8 @@ function App() {
     const url = `${process.env.REACT_APP_API_URL}/projects`;
     fetch(url)
       .then((res) => res.json())
-      .then((Data) => {
-        setProjects(Data);
+      .then((projectsData) => {
+        setProjects(projectsData);
       });
   }
 
@@ -42,7 +42,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header projects={projects} setProjects={setProjects} />
       <Switch>
         <Route exact path="/">
           <Home projects={projects} />
