@@ -1,3 +1,3 @@
 export default function CategoriesList() {
-  return <ul>hi</ul>;
+  return <ul>Categories here</ul>;
 }
