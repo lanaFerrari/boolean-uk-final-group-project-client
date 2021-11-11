@@ -16,6 +16,9 @@ function App() {
   const [projects, setProjects] = useState([]);
   const [users, setUsers] = useState([]);
 
+  //Hiding Login Form
+  const [hideForm, setHideForm] = useState(true);
+
   //Get all projects
   useEffect(() => {
     const url = `${process.env.REACT_APP_API_URL}/projects`;
@@ -27,7 +30,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const url = `${process.env.REACT_APP_API_URL}/projects`;
+    const url = `${process.env.REACT_APP_API_URL}/users`;
     fetch(url)
       .then((res) => res.json())
       .then((usersData) => {
@@ -43,7 +46,7 @@ function App() {
           <Home projects={projects} />
         </Route>
         <Route path="/login" exact>
-          <LoginForm />
+          <LoginForm hideForm={hideForm} setHideForm={setHideForm} />
         </Route>
         <Route exact path="/projects/:id/:title">
           <ProjectDetails />
