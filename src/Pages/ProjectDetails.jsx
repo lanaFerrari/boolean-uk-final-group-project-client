@@ -29,9 +29,10 @@ export default function ProjectDetails() {
   const { country } = profile;
 
   const countDonations = (donations) => {
-    let result = 0;
-    donations.forEach((donation) => (result += donation));
-    return result;
+    return donations.reduce(
+      (previousValue, currentValue) => previousValue + currentValue,
+      0
+    );
   };
 
   const totalDonations = countDonations(donations);
@@ -49,7 +50,7 @@ export default function ProjectDetails() {
       <div className="donation_details">
         <p>--------loader---------------</p>
         <p>
-          <strong>Donated:</strong> £{totalDonations !== 0 ? totalDonations : 0}
+          <strong>Donated:</strong> £{totalDonations}
         </p>
         <p>
           <strong>Goal:</strong> £{goal}
