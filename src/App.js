@@ -15,23 +15,27 @@ function App() {
   const [projects, setProjects] = useState([]);
   const [users, setUsers] = useState([]);
 
-  //Get all projects
-  useEffect(() => {
+  function getProjects() {
     const url = `${process.env.REACT_APP_API_URL}/projects`;
     fetch(url)
       .then((res) => res.json())
       .then((Data) => {
         setProjects(Data);
       });
-  }, []);
+  }
 
-  useEffect(() => {
+  function getUsers() {
     const url = `${process.env.REACT_APP_API_URL}/users`;
     fetch(url)
       .then((res) => res.json())
       .then((usersData) => {
         setUsers(usersData);
       });
+  }
+
+  useEffect(() => {
+    getProjects();
+    getUsers();
   }, []);
 
   return (
