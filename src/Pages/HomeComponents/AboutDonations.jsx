@@ -1,3 +1,3 @@
 export default function AboutDonations() {
-  return <ul>about</ul>;
+  return <ul>Donations here</ul>;
 }

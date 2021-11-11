@@ -1,3 +1,9 @@
 export default function Footer() {
-  return <ul>footer</ul>;
+  return (
+    <footer>
+      <p>Info . Support . Marketing</p>
+      <p>Terms of Use . Privacy Policy</p>
+      <p>Ⓒ Boolean</p>
+    </footer>
+  );
 }
