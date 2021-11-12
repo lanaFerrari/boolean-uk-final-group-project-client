@@ -14,6 +14,7 @@ function App() {
   //Saving projects data
   const [projects, setProjects] = useState([]);
   const [users, setUsers] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   const [hideForm, setHideForm] = useState(true);
 
@@ -35,9 +36,19 @@ function App() {
       });
   }
 
+  function getCategories() {
+    const url = `${process.env.REACT_APP_API_URL}/categories`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((categoriesData) => {
+        setCategories(categoriesData);
+      });
+  }
+
   useEffect(() => {
     getProjects();
     getUsers();
+    getCategories();
   }, []);
 
   return (
@@ -45,7 +56,11 @@ function App() {
       <Header projects={projects} setProjects={setProjects} />
       <Switch>
         <Route exact path="/">
-          <Home projects={projects} />
+          <Home
+            projects={projects}
+            categories={categories}
+            setProjects={setProjects}
+          />
         </Route>
         <Route path="/login" exact>
           <LoginForm hideForm={hideForm} setHideForm={setHideForm} />
