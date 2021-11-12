@@ -2,7 +2,6 @@ export default function ProjectsList({ projects }) {
   return (
     <ul>
       {projects.map((project, index) => {
-        console.log(projects);
         return (
           <li key={index}>
             <a href={`projects/${project.id}/${project.title}`}>
