@@ -2,7 +2,6 @@ import { useState } from "react";
 
 export default function Header({ projects, setProjects }) {
   const [searchInput, setSearchInput] = useState("");
-  console.log("searchinput", searchInput.replace(/\s+/g, "-").toLowerCase());
 
   const handleSearchInput = (e) => setSearchInput(e.target.value);
 
