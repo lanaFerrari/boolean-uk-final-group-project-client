@@ -15,6 +15,8 @@ function App() {
   const [projects, setProjects] = useState([]);
   const [users, setUsers] = useState([]);
 
+  const [hideForm, setHideForm] = useState(true);
+
   function getProjects() {
     const url = `${process.env.REACT_APP_API_URL}/projects`;
     fetch(url)
@@ -46,7 +48,7 @@ function App() {
           <Home projects={projects} />
         </Route>
         <Route path="/login" exact>
-          <LoginForm />
+          <LoginForm hideForm={hideForm} setHideForm={setHideForm} />
         </Route>
         <Route exact path="/projects/:id/:title">
           <ProjectDetails />
