@@ -29,11 +29,7 @@ export default function ProjectDetails() {
   const { country } = profile;
 
   const countDonations = (donations) => {
-    const donationAmounts = donations.map((donation) => donation.amount);
-    return donationAmounts.reduce(
-      (previousValue, currentValue) => previousValue + currentValue,
-      0
-    );
+    return donations.reduce((total, current) => total + current.amount, 0);
   };
 
   const totalDonations = countDonations(donations);
