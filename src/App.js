@@ -80,7 +80,7 @@ function App() {
             setUsers={setUsers}
           />
         </Route>
-        <Route path="/:userName/myProjects" exact>
+        <Route path="/:userId/:userName/myProjects" exact>
           <UserProjects />
         </Route>
       </Switch>
