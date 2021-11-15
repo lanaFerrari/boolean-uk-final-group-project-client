@@ -9,6 +9,7 @@ import UserProjectForm from "./Pages/UserProjectForm";
 import UserProjects from "./Pages/UserProjects";
 import Header from "./Pages/Components/Header";
 import Footer from "./Pages/Components/Footer";
+import EditProjectForm from "./Pages/EditProjectForm";
 
 function App() {
   //Saving projects data
@@ -79,6 +80,9 @@ function App() {
             users={users}
             setUsers={setUsers}
           />
+        </Route>
+        <Route exact path="/:userId/:userName/:projectId/edit-project">
+          <EditProjectForm />
         </Route>
         <Route path="/:userId/:userName/myProjects" exact>
           <UserProjects />
