@@ -1,42 +1,94 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router";
 
-export default function UserProjectForm({ categories }) {
+export default function UserProjectForm({
+  categories,
+  projects,
+  setProjects,
+  users,
+  setUsers,
+}) {
+  const history = useHistory();
+  const { userId, userName } = useParams();
+  const targetUserId = parseInt(userId);
+
+  const [targetUser, setTargetUser] = useState(null);
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [goal, setGoal] = useState(0);
-  const [projectCategories, setProjectCategories] = useState([]);
+  const [projectCategoryIds, setProjectCategoryIds] = useState([]);
 
-  const handleTitleInput = (e) => {
-    console.log(e.target.value);
-    setTitle(e.target.value);
-  };
-  const handleDescriptionInput = (e) => {
-    console.log(e.target.value);
-    setDescription(e.target.value);
-  };
-  const handleGoalInput = (e) => {
-    console.log(e.target.value);
-    setGoal(e.target.value);
-  };
-  const handlecategoriesCheckbox = (e) => {
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_API_URL}/users/${targetUserId}`)
+      .then((res) => res.json())
+      .then((foundUser) => {
+        setTargetUser(foundUser.response);
+      });
+  }, [targetUserId]);
+
+  if (!targetUser) {
+    return null;
+  }
+
+  if (targetUser.name !== userName) {
+    history.push(`/${targetUserId}/${targetUser.name}/create-project`);
+    return null;
+  }
+
+  const handleCategoriesCheckbox = (e) => {
     const isChecked = e.target.checked;
-    const selectedCategory = e.target.value;
-    console.log({ selectedCategory, isChecked });
-    console.log({ projectCategories });
+    const selectedCategoryId = parseInt(e.target.value);
 
     if (isChecked) {
-      setProjectCategories([...projectCategories, selectedCategory]);
+      setProjectCategoryIds([...projectCategoryIds, selectedCategoryId]);
     } else {
-      const filteredCategories = projectCategories.filter(
-        (category) => selectedCategory !== category
+      const filteredCategoryIds = projectCategoryIds.filter(
+        (categoryId) => selectedCategoryId !== categoryId
       );
-      console.log({ filteredCategories });
-      setProjectCategories(filteredCategories);
+      setProjectCategoryIds(filteredCategoryIds);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const projectDetails = {
+      title,
+      description,
+      goal: parseInt(goal),
+      categoryIds: projectCategoryIds,
+      userId: parseInt(targetUser.id),
+    };
+
+    const fetchOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(projectDetails),
+    };
+
+    fetch(`${process.env.REACT_APP_API_URL}/projects`, fetchOptions)
+      .then((res) => res.json())
+      .then((newProject) => {
+        setProjects([...projects, newProject]);
+
+        const updatedUsers = users.map((_user) => {
+          if (_user.id === targetUser.id) {
+            return {
+              ..._user,
+              projects: [..._user.projects, newProject],
+            };
+          } else {
+            return {
+              _user,
+            };
+          }
+        });
+
+        setUsers(updatedUsers);
+      });
   };
 
   return (
@@ -49,7 +101,7 @@ export default function UserProjectForm({ categories }) {
         type="text"
         value={title}
         required
-        onChange={handleTitleInput}
+        onChange={(e) => setTitle(e.target.value)}
       />
 
       <label htmlFor="description">Description:</label>
@@ -59,7 +111,7 @@ export default function UserProjectForm({ categories }) {
         rows="3"
         cols="65"
         value={description}
-        onChange={handleDescriptionInput}
+        onChange={(e) => setDescription(e.target.value)}
       ></textarea>
 
       <label htmlFor="goal">Goal:</label>
@@ -70,7 +122,7 @@ export default function UserProjectForm({ categories }) {
         min="0"
         value={goal}
         required
-        onChange={handleGoalInput}
+        onChange={(e) => setGoal(e.target.value)}
       />
 
       <label htmlFor="categories">Categories:</label>
@@ -79,10 +131,10 @@ export default function UserProjectForm({ categories }) {
           <div key={index}>
             <input
               type="checkbox"
-              name={category.name}
-              value={category.name}
-              checked={projectCategories.includes(category.name)}
-              onChange={handlecategoriesCheckbox}
+              name="categories"
+              value={category.id}
+              checked={projectCategoryIds.includes(category.id)}
+              onChange={handleCategoriesCheckbox}
             />
             <label htmlFor={category.name}>{category.name}</label>
           </div>
