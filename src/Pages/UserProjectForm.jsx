@@ -88,6 +88,8 @@ export default function UserProjectForm({
         });
 
         setUsers(updatedUsers);
+
+        history.push(`/${userId}/${userName}`);
       });
   };
 

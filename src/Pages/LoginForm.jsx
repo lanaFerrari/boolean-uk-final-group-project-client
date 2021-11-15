@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import { useHistory } from "react-router";
 
 export default function LoginForm(props) {
+  const history = useHistory();
   const { setHideForm } = props;
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -41,6 +43,7 @@ export default function LoginForm(props) {
       .then((res) => res.json())
       .then((newUser) => {
         console.log("inside POST response: ", newUser);
+        history.push(`/${newUser.id}/${newUser.name}`);
       });
     clearForm();
     setHideForm(true);

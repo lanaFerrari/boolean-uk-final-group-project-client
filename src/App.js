@@ -68,7 +68,7 @@ function App() {
         <Route exact path="/projects/:id/:title">
           <ProjectDetails />
         </Route>
-        <Route path="/:userName" exact>
+        <Route path="/:userId/:userName" exact>
           <UserHome />
         </Route>
         <Route path="/:userId/:userName/create-project" exact>
