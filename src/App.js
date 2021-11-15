@@ -71,8 +71,14 @@ function App() {
         <Route path="/:userName" exact>
           <UserHome />
         </Route>
-        <Route path="/:userName/create-project" exact>
-          <UserProjectForm />
+        <Route path="/:userId/:userName/create-project" exact>
+          <UserProjectForm
+            categories={categories}
+            projects={projects}
+            setProjects={setProjects}
+            users={users}
+            setUsers={setUsers}
+          />
         </Route>
         <Route path="/:userName/myProjects" exact>
           <UserProjects />
