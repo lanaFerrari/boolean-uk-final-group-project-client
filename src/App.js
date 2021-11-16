@@ -16,8 +16,28 @@ function App() {
   const [projects, setProjects] = useState([]);
   const [users, setUsers] = useState([]);
   const [categories, setCategories] = useState([]);
-
+  const [searchInput, setSearchInput] = useState("");
   const [hideForm, setHideForm] = useState(true);
+
+  const projectsToRender = getProjectsToRender(projects, searchInput);
+
+  function getProjectsToRender(projects, searchInput) {
+    if (searchInput === "") {
+      return projects;
+    }
+
+    return projects.filter(
+      (project) =>
+        project.title
+          .replace(/\s+/g, "-")
+          .toLowerCase()
+          .includes(searchInput) ||
+        project.user.name
+          .replace(/\s+/g, "-")
+          .toLowerCase()
+          .includes(searchInput)
+    );
+  }
 
   function getProjects() {
     const url = `${process.env.REACT_APP_API_URL}/projects`;
@@ -54,11 +74,11 @@ function App() {
 
   return (
     <>
-      <Header projects={projects} setProjects={setProjects} />
+      <Header searchInput={searchInput} setSearchInput={setSearchInput} />
       <Switch>
         <Route exact path="/">
           <Home
-            projects={projects}
+            projectsToRender={projectsToRender}
             categories={categories}
             setProjects={setProjects}
           />

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function CategoriesList({ categories, projects, setProjects }) {
+export default function CategoriesList({ categories, setProjects }) {
   const [pickedCategory, setPickedCategory] = useState("");
 
   function getProjectsByCategories() {

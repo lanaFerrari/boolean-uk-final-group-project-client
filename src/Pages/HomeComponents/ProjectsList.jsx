@@ -1,7 +1,7 @@
-export default function ProjectsList({ projects }) {
+export default function ProjectsList({ projectsToRender }) {
   return (
     <ul>
-      {projects.map((project, index) => {
+      {projectsToRender.map((project, index) => {
         return (
           <li key={index}>
             <a href={`/project/${project.id}/${project.title}`}>
