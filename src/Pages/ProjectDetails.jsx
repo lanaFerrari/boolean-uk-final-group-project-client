@@ -21,7 +21,7 @@ export default function ProjectDetails() {
   }
 
   if (project.title !== title) {
-    history.push(`/projects/${id}/${project.title}`);
+    history.push(`/project/${id}/${project.title}`);
   }
 
   const { title: projectTitle, description, goal, user, donations } = project;

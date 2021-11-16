@@ -9,6 +9,7 @@ import UserProjectForm from "./Pages/UserProjectForm";
 import UserProjects from "./Pages/UserProjects";
 import Header from "./Pages/Components/Header";
 import Footer from "./Pages/Components/Footer";
+import EditProjectForm from "./Pages/EditProjectForm";
 
 function App() {
   //Saving projects data
@@ -65,13 +66,13 @@ function App() {
         <Route path="/login" exact>
           <LoginForm hideForm={hideForm} setHideForm={setHideForm} />
         </Route>
-        <Route exact path="/projects/:id/:title">
+        <Route exact path="/project/:id/:title">
           <ProjectDetails />
         </Route>
-        <Route path="/:userName" exact>
+        <Route path="/user/:userId/:userName" exact>
           <UserHome />
         </Route>
-        <Route path="/:userId/:userName/create-project" exact>
+        <Route path="/user/:userId/:userName/create-project" exact>
           <UserProjectForm
             categories={categories}
             projects={projects}
@@ -80,7 +81,10 @@ function App() {
             setUsers={setUsers}
           />
         </Route>
-        <Route path="/:userName/myProjects" exact>
+        <Route exact path="/user/:userId/:userName/:projectId/edit-project">
+          <EditProjectForm />
+        </Route>
+        <Route path="/user/:userId/:userName/myProjects" exact>
           <UserProjects />
         </Route>
       </Switch>
