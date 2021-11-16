@@ -1,19 +1,10 @@
 import { useState } from "react";
 
-export default function Header({ projects, setProjects }) {
-  const [searchInput, setSearchInput] = useState("");
-
+export default function Header({ searchInput, setSearchInput }) {
   const handleSearchInput = (e) => setSearchInput(e.target.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const newList = projects.filter(
-      (project) =>
-        project.title.replace(/\s+/g, "-").toLowerCase() ===
-        searchInput.replace(/\s+/g, "-").toLowerCase()
-    );
-    setProjects(newList);
   };
 
   return (
@@ -22,7 +13,7 @@ export default function Header({ projects, setProjects }) {
         <a href="/login">Create Project</a>
       </p>
       <p>
-        <a href="https://boolean.co.uk" target="_blank">
+        <a href="https://boolean.co.uk" target="_blank" rel="noreferrer">
           Boolean
         </a>
       </p>
