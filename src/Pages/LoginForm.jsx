@@ -43,7 +43,7 @@ export default function LoginForm(props) {
       .then((res) => res.json())
       .then((newUser) => {
         console.log("inside POST response: ", newUser);
-        history.push(`/${newUser.id}/${newUser.name}`);
+        history.push(`/user/${newUser.id}/${newUser.name}`);
       });
     clearForm();
     setHideForm(true);

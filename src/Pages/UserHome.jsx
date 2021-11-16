@@ -22,7 +22,7 @@ export default function UserHome() {
   }
 
   if (targetUser.name !== userName) {
-    history.push(`/${targetUser.id}/${targetUser.name}/`);
+    history.push(`/user/${targetUser.id}/${targetUser.name}/`);
     return null;
   }
 
@@ -31,10 +31,10 @@ export default function UserHome() {
       <h1>Hello, {targetUser.name}!</h1>
       <hr />
       <>
-        <Link to={`/${targetId}/${userName}/myProjects`}>
+        <Link to={`/user/${targetId}/${userName}/myProjects`}>
           <h2>My Projects</h2>
         </Link>
-        <Link to={`/${targetId}/${userName}/create-project`}>
+        <Link to={`/user/${targetId}/${userName}/create-project`}>
           <h2>Create Project</h2>
         </Link>
         <Link to="/">

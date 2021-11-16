@@ -32,7 +32,7 @@ export default function UserProjectForm({
   }
 
   if (targetUser.name !== userName) {
-    history.push(`/${targetUserId}/${targetUser.name}/create-project`);
+    history.push(`/user/${targetUserId}/${targetUser.name}/create-project`);
     return null;
   }
 
@@ -89,7 +89,7 @@ export default function UserProjectForm({
 
         setUsers(updatedUsers);
 
-        history.push(`/${userId}/${userName}`);
+        history.push(`/user/${userId}/${userName}`);
       });
   };
 

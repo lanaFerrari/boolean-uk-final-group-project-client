@@ -56,7 +56,7 @@ export default function UserProjects() {
                 type="button"
                 onClick={() => {
                   history.push(
-                    `/${project.userId}/${userName}/${project.id}/edit-project`
+                    `/user/${project.userId}/${userName}/${project.id}/edit-project`
                   );
                 }}
               >
