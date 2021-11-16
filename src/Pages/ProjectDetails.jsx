@@ -4,17 +4,17 @@ import { useHistory, useParams } from "react-router";
 export default function ProjectDetails() {
   const history = useHistory();
   const { id, title } = useParams();
-  const tragetId = +id;
+  const targetId = +id;
   const [project, setProject] = useState(null);
 
   useEffect(() => {
-    const url = `${process.env.REACT_APP_API_URL}/projects/${tragetId}`;
+    const url = `${process.env.REACT_APP_API_URL}/projects/${targetId}`;
     fetch(url)
       .then((res) => res.json())
       .then((projectData) => {
         setProject(projectData);
       });
-  }, [tragetId]);
+  }, [targetId]);
 
   if (project === null) {
     return "loading";
@@ -52,7 +52,10 @@ export default function ProjectDetails() {
         <p>
           <strong>Goal:</strong> £{goal}
         </p>
-        <button type="button" onClick={() => history.push("/login")}>
+        <button
+          type="button"
+          onClick={() => history.push(`/project/${targetId}/${title}/donation`)}
+        >
           Donate
         </button>
       </div>

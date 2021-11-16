@@ -10,6 +10,7 @@ import UserProjects from "./Pages/UserProjects";
 import Header from "./Pages/Components/Header";
 import Footer from "./Pages/Components/Footer";
 import EditProjectForm from "./Pages/EditProjectForm";
+import DonationsForm from "./Pages/DonationsForm";
 
 function App() {
   //Saving projects data
@@ -88,6 +89,9 @@ function App() {
         </Route>
         <Route exact path="/project/:id/:title">
           <ProjectDetails />
+        </Route>
+        <Route exact path="/project/:id/:title/donation">
+          <DonationsForm />
         </Route>
         <Route path="/user/:userId/:userName" exact>
           <UserHome />
