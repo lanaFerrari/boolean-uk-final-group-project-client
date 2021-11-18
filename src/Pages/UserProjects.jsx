@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 
-export default function UserProjects() {
+export default function UserProjects({ projects, setProjects }) {
   const history = useHistory();
   const { userId, userName } = useParams();
   const targetUserId = parseInt(userId);
@@ -10,9 +10,19 @@ export default function UserProjects() {
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/users/${targetUserId}`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((data) => {
-        setUserProjects(data.response.projects);
+        if (typeof data === "object" && !Array.isArray(data) && data !== null) {
+          setUserProjects(data.response.projects);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
       });
   }, [targetUserId]);
 
@@ -20,25 +30,29 @@ export default function UserProjects() {
     return "no projects";
   }
 
-  /* TODO: pass handler function on delete button and test handleDelete 
-  after controller on server side  will be created */
-
-  // const handleDelete = (project) => {
-  //   const id = project.id;
-  //   console.log("Project to delete: ", project);
-  //   fetch(`${process.env.REACT_APP_API_URL}/projects/${id}`, {
-  //     method: "DELETE",
-  //   })
-  //     .then((res) => res.json())
-  //     .then(() => {
-  //       const updatedProjects = userProjects.filter(
-  //         (project) => project.id !== id
-  //       );
-  //       setUserProjects(updatedProjects);
-
-  //       history.push(`/${project.userId}/${userName}/`);
-  //     });
-  // };
+  const handleDelete = (project) => {
+    const targetProjectId = project.id;
+    console.log("Project to delete: ", project);
+    fetch(`${process.env.REACT_APP_API_URL}/projects/${targetProjectId}`, {
+      method: "DELETE",
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then(() => {
+        const updatedProjects = projects.filter(
+          (project) => project.id !== targetProjectId
+        );
+        setProjects(updatedProjects);
+        history.push(`/user/${userId}/${userName}`);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
     <>
@@ -62,12 +76,7 @@ export default function UserProjects() {
               >
                 Edit
               </button>
-              <button
-                type="button"
-                onClick={() => {
-                  // pass handleDelete here
-                }}
-              >
+              <button type="button" onClick={() => handleDelete(project)}>
                 Delete
               </button>
             </div>

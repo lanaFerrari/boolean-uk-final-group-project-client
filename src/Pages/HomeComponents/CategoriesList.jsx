@@ -6,9 +6,19 @@ export default function CategoriesList({ categories, setProjects }) {
   function getProjectsByCategories() {
     const url = `${process.env.REACT_APP_API_URL}/projects/${pickedCategory}`;
     fetch(url)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((categoriesData) => {
-        setProjects(categoriesData);
+        if (Array.isArray(categoriesData) && categoriesData.length >= 0) {
+          setProjects(categoriesData);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
       });
   }
 

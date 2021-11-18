@@ -34,9 +34,22 @@ export default function DonationsForm() {
     };
 
     fetch(`${process.env.REACT_APP_API_URL}/donations`, fetchOptionsDonation)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((newDonation) => {
-        console.log("Inside POST response", newDonation);
+        if (
+          typeof newDonation === "object" &&
+          !Array.isArray(newDonation) &&
+          newDonation !== null
+        )
+          console.log("Inside POST response", newDonation);
+      })
+      .catch((error) => {
+        console.error(error);
       });
     clearForm();
   };

@@ -70,9 +70,19 @@ export default function UserProjectForm({
     };
 
     fetch(`${process.env.REACT_APP_API_URL}/projects`, fetchOptions)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((newProject) => {
-        setProjects([...projects, newProject]);
+        if (
+          typeof newProject === "object" &&
+          !Array.isArray(newProject) &&
+          newProject !== null
+        )
+          setProjects([...projects, newProject]);
 
         const updatedUsers = users.map((_user) => {
           if (_user.id === targetUser.id) {
@@ -90,6 +100,9 @@ export default function UserProjectForm({
         setUsers(updatedUsers);
 
         history.push(`/user/${userId}/${userName}`);
+      })
+      .catch((error) => {
+        console.error(error);
       });
   };
 

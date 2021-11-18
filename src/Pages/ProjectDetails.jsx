@@ -10,9 +10,23 @@ export default function ProjectDetails() {
   useEffect(() => {
     const url = `${process.env.REACT_APP_API_URL}/projects/${targetId}`;
     fetch(url)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((projectData) => {
-        setProject(projectData);
+        if (
+          typeof projectData === "object" &&
+          !Array.isArray(projectData) &&
+          projectData !== null
+        ) {
+          setProject(projectData);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
       });
   }, [targetId]);
 
