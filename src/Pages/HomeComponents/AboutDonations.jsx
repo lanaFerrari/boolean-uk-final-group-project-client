@@ -12,19 +12,21 @@ export default function AboutDonations({ donations, users }) {
   }, 0);
 
   return (
-    <ul>
-      <li>
-        <p>{donations.length}</p>
-        <p>Donations</p>
-      </li>
-      <li>
-        <p>£{total}</p>
-        <p>Donated</p>
-      </li>
-      <li>
-        <p>{countHelpers}</p>
-        <p>Helpers</p>
-      </li>
-    </ul>
+    <div className="centering padding-top padding-bottom">
+      <ul className="three-c-grid bold-font">
+        <li className="box align-center padding-top padding-bottom">
+          <p className="align-center ">{donations.length}</p>
+          <p className="blue-color ">Donations</p>
+        </li>
+        <li className="box align-center padding-top padding-bottom">
+          <p className="align-center ">£{total}</p>
+          <p className="blue-color">Donated</p>
+        </li>
+        <li className="box align-center padding-top padding-bottom">
+          <p className="align-center ">{countHelpers}</p>
+          <p className="blue-color">Helpers</p>
+        </li>
+      </ul>
+    </div>
   );
 }

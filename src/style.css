@@ -1,0 +1,168 @@
+/* Modern Reset */
+
+/* Box sizing rules */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: helvetica;
+}
+
+/* Remove default padding */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li {
+  margin: 0;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Make images easier to work with */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  height: 70px;
+}
+
+input[type="text"] {
+  max-width: 100px;
+  font-size: 17px;
+  border: none;
+}
+
+input[type="submit"] {
+  width: 38px;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  background-color: white;
+}
+/* Colours and styles*/
+
+.boolean-blue {
+  color: rgb(0, 22, 50);
+}
+
+.blue-color {
+  color: rgb(0, 108, 250);
+}
+
+.white-color {
+  color: white;
+}
+.boolean-green {
+  color: rgb(12, 217, 119);
+}
+
+.dark-grey-color {
+  color: rgb(51, 51, 51);
+}
+
+.bold-font {
+  font-weight: bolder;
+}
+
+.blue-background-color {
+  background-color: rgb(0, 22, 50);
+}
+/* Centering */
+.center-text {
+  display: grid;
+  align-items: center;
+}
+.centering {
+  padding: 0.1rem 17rem 0.1rem 17rem;
+}
+
+.align-center {
+  display: grid;
+  justify-content: center;
+}
+
+.padding-bottom {
+  padding-bottom: 30px;
+}
+
+.padding-top {
+  padding-top: 30px;
+}
+
+.box {
+  border: 1px solid lightslategrey;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.button-Categories {
+  background-color: white;
+  border: none;
+}
+
+.button-Categories:hover {
+  color: white;
+  background-color: rgb(0, 108, 250);
+  padding: 8px 20px 8px 20px;
+  border-radius: 10px;
+}
+/* Grids */
+
+.three-c-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+  gap: 0.2rem;
+}
+
+.two-c-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.seven-c-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
