@@ -8,28 +8,50 @@ export default function Header({ searchInput, setSearchInput }) {
   };
 
   return (
-    <header>
-      <p>
-        <a href="/login">Create Project</a>
-      </p>
-      <p>
-        <a href="https://boolean.co.uk" target="_blank" rel="noreferrer">
-          Boolean
+    <header className="three-c-grid centering center-text ">
+      <div className="three-c-grid ">
+        {" "}
+        <p>
+          <a href="/login" className="boolean-blue">
+            Create Project
+          </a>
+        </p>
+        <p>
+          <a href="/login" className="boolean-blue align-center">
+            Log in
+          </a>
+        </p>
+      </div>
+      <div>
+        <a
+          href="https://boolean.co.uk"
+          target="_blank"
+          rel="noreferrer"
+          className="align-center"
+        >
+          <img
+            src="https://boolean.co.uk/images/misc/logo.png"
+            alt="Boolean"
+            width="130px"
+          />
         </a>
-      </p>
-      <p>
-        <a href="/login">Log in</a>
-      </p>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="search"
-          id="search"
-          value={searchInput}
-          onChange={handleSearchInput}
-        />
-        <input type="submit" name="submit" value="Search" />
-      </form>
+      </div>
+      <div className="two-c-grid">
+        <p></p>
+
+        <form onSubmit={handleSubmit}>
+          <input type="submit" name="submit" value="🔎︎" />
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Search"
+            value={searchInput}
+            onChange={handleSearchInput}
+            className="boolean-blue"
+          />
+        </form>
+      </div>
     </header>
   );
 }
