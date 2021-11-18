@@ -129,6 +129,9 @@ input[type="submit"] {
   padding-top: 30px;
 }
 
+.padding-form {
+  padding: 50px 30px 50px 30px;
+}
 .box {
   border: 1px solid lightslategrey;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -138,6 +141,8 @@ input[type="submit"] {
   background-color: white;
   border: none;
   padding: 8px 23px 8px 23px;
+  border: 1px solid white;
+  border-radius: 10px;
 }
 
 .button-style {
@@ -156,6 +161,17 @@ input[type="submit"] {
   border: 1px solid rgb(0, 108, 250);
   padding: 8px 23px 8px 23px;
   border-radius: 10px;
+}
+
+.input-box {
+  border: 1px solid rgb(0, 22, 50);
+  border-radius: 5px;
+  padding: 0.3rem 1rem 0.3rem 1rem;
+}
+
+.flex-end {
+  display: grid;
+  align-items: flex-end;
 }
 /* Grids */
 

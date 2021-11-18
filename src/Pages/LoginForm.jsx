@@ -49,41 +49,53 @@ export default function LoginForm(props) {
     setHideForm(true);
   };
   return (
-    <form className="center form-stack light-shadow" onSubmit={handleSubmit}>
-      <h1>Sign In</h1>
-      <label htmlFor="first-name-input">Full Name:</label>
-      <input
-        id="full-name-input"
-        name="full-name-input"
-        type="text"
-        onChange={handleUserNameInput}
-        value={name}
-        required
-      />
-      <label htmlFor="email-input">E-mail Address:</label>
-      <input
-        id="email-input"
-        name="email-input"
-        type="email"
-        onChange={handleEmailInput}
-        value={email}
-        required
-      />
-      <label htmlFor="country-input">Country:</label>
-      <input
-        id="country-input"
-        name="country-input"
-        type="text"
-        onChange={handleCountryInput}
-        value={country}
-        required
-      />
+    <div className="padding-top padding-bottom">
+      <form
+        className="center form-stack light-shadow padding-form"
+        onSubmit={handleSubmit}
+      >
+        <h1 className="padding-bottom blue-color align-center">Sign In</h1>
+        <label htmlFor="first-name-input ">Full Name:</label>
+        <input
+          className="input-box "
+          id="full-name-input"
+          name="full-name-input"
+          type="full-name-input"
+          onChange={handleUserNameInput}
+          value={name}
+          required
+        />
+        <label htmlFor="email-input" className="padding-top">
+          E-mail Address:
+        </label>
+        <input
+          className="input-box"
+          id="email-input"
+          name="email-input"
+          type="email-input"
+          onChange={handleEmailInput}
+          value={email}
+          required
+        />
+        <label htmlFor="country-input" className="padding-top">
+          Country:
+        </label>
+        <input
+          className="input-box"
+          id="country-input"
+          name="country-input"
+          type="country-input"
+          onChange={handleCountryInput}
+          value={country}
+          required
+        />
 
-      <div className="actions-section">
-        <button className="" type="submit">
-          Log In
-        </button>
-      </div>
-    </form>
+        <div className="actions-section padding-top padding-bottom flex-end">
+          <button className="button-style" type="submit">
+            Log In
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
