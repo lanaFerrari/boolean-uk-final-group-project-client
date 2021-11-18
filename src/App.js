@@ -17,6 +17,7 @@ function App() {
   const [projects, setProjects] = useState([]);
   const [users, setUsers] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [donations, setDonations] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [hideForm, setHideForm] = useState(true);
 
@@ -67,10 +68,20 @@ function App() {
       });
   }
 
+  function getDonations() {
+    const url = `${process.env.REACT_APP_API_URL}/donations`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((donationsData) => {
+        setDonations(donationsData);
+      });
+  }
+
   useEffect(() => {
     getProjects();
     getUsers();
     getCategories();
+    getDonations();
   }, []);
 
   return (
@@ -82,6 +93,8 @@ function App() {
             projectsToRender={projectsToRender}
             categories={categories}
             setProjects={setProjects}
+            donations={donations}
+            users={users}
           />
         </Route>
         <Route path="/login" exact>
