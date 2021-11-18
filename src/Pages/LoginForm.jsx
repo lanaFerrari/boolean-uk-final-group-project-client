@@ -57,7 +57,7 @@ export default function LoginForm(props) {
         <h1 className="padding-bottom blue-color align-center">Sign In</h1>
         <label htmlFor="first-name-input ">Full Name:</label>
         <input
-          className="input-box "
+          className="input-box"
           id="full-name-input"
           name="full-name-input"
           type="full-name-input"
