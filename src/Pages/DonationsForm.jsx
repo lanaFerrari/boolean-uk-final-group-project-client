@@ -21,7 +21,7 @@ export default function DonationsForm() {
 
     const donationDetails = {
       amount: amount,
-      userId: 1,
+      userId: 27,
       projectId: targetId,
     };
 
