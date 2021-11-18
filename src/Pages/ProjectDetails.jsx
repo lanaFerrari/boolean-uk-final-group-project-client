@@ -36,28 +36,42 @@ export default function ProjectDetails() {
 
   return (
     <>
-      <h1>{projectTitle}</h1>
-      <div className="project_details">
-        <img src="https://via.placeholder.com/200" alt="project placeholder" />
-        <h3>{description}</h3>
-        <p>
-          <strong>{name}</strong> - {country}
-        </p>
-      </div>
-      <div className="donation_details">
-        <p>--------loader---------------</p>
-        <p>
-          <strong>Donated:</strong> £{totalDonations}
-        </p>
-        <p>
-          <strong>Goal:</strong> £{goal}
-        </p>
-        <button
-          type="button"
-          onClick={() => history.push(`/project/${targetId}/${title}/donation`)}
-        >
-          Donate
-        </button>
+      <div className="align-center padding-top padding-bottom">
+        <h1 className="padding-bottom padding-top boolean-green">
+          {projectTitle}
+        </h1>
+        <div className="project_details">
+          <img
+            src="https://via.placeholder.com/200"
+            alt="project placeholder"
+          />
+          <h3 className="padding-top">{description}</h3>
+          <p>
+            <strong>{name}</strong> - {country}
+          </p>
+        </div>
+        <div className="donation_details">
+          <p className="padding-bottom padding-top">
+            --------loader---------------
+          </p>
+          <p>
+            <strong className="blue-color">Donated:</strong> £{totalDonations}
+          </p>
+          <p className="padding-bottom">
+            <strong className="blue-color">Goal:</strong> £{goal}
+          </p>
+          <div className="align-center">
+            <button
+              className="button-style"
+              type="button"
+              onClick={() =>
+                history.push(`/project/${targetId}/${title}/donation`)
+              }
+            >
+              Donate
+            </button>
+          </div>
+        </div>
       </div>
     </>
   );
