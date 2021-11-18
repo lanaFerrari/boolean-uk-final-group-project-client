@@ -176,6 +176,10 @@ input[type="submit"] {
   display: grid;
   align-items: flex-end;
 }
+
+.gap {
+  padding-left: 0.3rem;
+}
 /* Grids */
 
 .three-c-grid {
