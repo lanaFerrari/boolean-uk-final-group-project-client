@@ -37,6 +37,7 @@ body {
 .adding-height {
   min-height: 70vh;
 }
+
 /* Make images easier to work with */
 img {
   max-width: 100%;

@@ -41,7 +41,7 @@ export default function DonationsForm() {
     clearForm();
   };
   return (
-    <div className="adding-height padding-top padding-bottom align-center">
+    <div className="adding-height  align-center">
       <form
         className="center form-stack light-shadow padding-form"
         onSubmit={handleSubmit}
