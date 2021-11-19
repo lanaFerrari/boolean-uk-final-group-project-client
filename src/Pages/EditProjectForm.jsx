@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useParams, useHistory } from "react-router";
 
-export default function EditProjectForm() {
+export default function EditProjectForm({ categories }) {
   const history = useHistory();
   const { userId, userName, projectId } = useParams();
   const targetProjectId = parseInt(projectId);
