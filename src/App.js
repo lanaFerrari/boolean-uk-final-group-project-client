@@ -165,7 +165,7 @@ function App() {
           />
         </Route>
         <Route exact path="/user/:userId/:userName/:projectId/edit-project">
-          <EditProjectForm />
+          <EditProjectForm categories={categories} />
         </Route>
         <Route path="/user/:userId/:userName/myProjects" exact>
           <UserProjects projects={projects} setProjects={setProjects} />
