@@ -11,9 +11,23 @@ export default function UserHome() {
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/users/${targetId}`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((foundUser) => {
-        setTargetUser(foundUser.response);
+        if (
+          typeof foundUser === "object" &&
+          !Array.isArray(foundUser) &&
+          foundUser !== null
+        ) {
+          setTargetUser(foundUser.response);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
       });
   }, [targetId]);
 

@@ -39,11 +39,24 @@ export default function LoginForm(props) {
       body: JSON.stringify(userDetails),
     };
 
-    fetch("http://localhost:3030/users", fetchOptionsUser)
-      .then((res) => res.json())
+    fetch(`${process.env.REACT_APP_API_URL}/users`, fetchOptionsUser)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((newUser) => {
-        console.log("inside POST response: ", newUser);
+        if (
+          typeof newUser === "object" &&
+          !Array.isArray(newUser) &&
+          newUser !== null
+        )
+          console.log("inside POST response: ", newUser);
         history.push(`/user/${newUser.id}/${newUser.name}`);
+      })
+      .catch((error) => {
+        console.error(error);
       });
     clearForm();
     setHideForm(true);

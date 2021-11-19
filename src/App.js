@@ -41,39 +41,85 @@ function App() {
     );
   }
 
+  /*
+  Response error handling resources:
+   => https://developer.mozilla.org/en-US/docs/Web/API/fetch#examples
+   => https://developer.mozilla.org/en-US/docs/Web/API/Response/ok
+  */
+
   function getProjects() {
     const url = `${process.env.REACT_APP_API_URL}/projects`;
     fetch(url)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((projectsData) => {
-        setProjects(projectsData);
+        if (Array.isArray(projectsData)) {
+          setProjects(projectsData);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
       });
   }
 
   function getUsers() {
     const url = `${process.env.REACT_APP_API_URL}/users`;
     fetch(url)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((usersData) => {
-        setUsers(usersData);
+        if (Array.isArray(usersData)) {
+          setUsers(usersData);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
       });
   }
 
   function getCategories() {
     const url = `${process.env.REACT_APP_API_URL}/categories`;
     fetch(url)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((categoriesData) => {
-        setCategories(categoriesData);
+        if (Array.isArray(categoriesData)) {
+          setCategories(categoriesData);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
       });
   }
 
   function getDonations() {
     const url = `${process.env.REACT_APP_API_URL}/donations`;
     fetch(url)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((donationsData) => {
-        setDonations(donationsData);
+        if (Array.isArray(donationsData)) {
+          setDonations(donationsData);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
       });
   }
 
