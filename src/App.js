@@ -122,7 +122,7 @@ function App() {
           <EditProjectForm />
         </Route>
         <Route path="/user/:userId/:userName/myProjects" exact>
-          <UserProjects />
+          <UserProjects projects={projects} setProjects={setProjects} />
         </Route>
       </Switch>
       <Footer />
