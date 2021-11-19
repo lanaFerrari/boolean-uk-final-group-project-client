@@ -105,7 +105,9 @@ input[type="submit"] {
 .blue-background-color {
   background-color: rgb(0, 22, 50);
 }
+
 /* Centering */
+
 .center-text {
   display: grid;
   align-items: center;
@@ -135,12 +137,24 @@ input[type="submit"] {
 .button-Categories {
   background-color: white;
   border: none;
+  padding: 8px 23px 8px 23px;
 }
 
-.button-Categories:hover {
+.button-style {
+  padding: 8px 23px 8px 23px;
+  border-radius: 10px;
+  background-color: rgb(12, 217, 119);
+  border: 1px solid rgb(12, 217, 119);
+  color: white;
+  font-size: 18px;
+}
+
+.button-Categories:hover,
+.button-style:hover {
   color: white;
   background-color: rgb(0, 108, 250);
-  padding: 8px 20px 8px 20px;
+  border: 1px solid rgb(0, 108, 250);
+  padding: 8px 23px 8px 23px;
   border-radius: 10px;
 }
 /* Grids */
