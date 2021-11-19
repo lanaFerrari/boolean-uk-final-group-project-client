@@ -38,34 +38,47 @@ export default function UserProjects({ projects, setProjects }) {
   };
 
   return (
-    <>
-      <h1>{userName} projects</h1>
+    <div className="adding-height  align-center">
+      <h1 className="padding-top blue-color">{userName} projects</h1>
       {userProjects.map((project, index) => {
         return (
-          <div key={index}>
-            <img
-              src="https://via.placeholder.com/150"
-              alt="project placeholder"
-            />
-            <h3>{project.title}</h3>
-            <div>
-              <button
-                type="button"
-                onClick={() => {
-                  history.push(
-                    `/user/${project.userId}/${userName}/${project.id}/edit-project`
-                  );
-                }}
-              >
-                Edit
-              </button>
-              <button type="button" onClick={() => handleDelete(project)}>
-                Delete
-              </button>
+          <div className="responsive-grid">
+            <div key={index}>
+              <div className="align-center">
+                <img
+                  src="https://via.placeholder.com/150"
+                  alt="project placeholder"
+                />
+              </div>
+              <h3 className="align-center padding-top">{project.title}</h3>
+              <div className="two-c-grid">
+                <div className="actions-section padding-top padding-bottom flex-end">
+                  <button
+                    className="button-style"
+                    type="button"
+                    onClick={() => {
+                      history.push(
+                        `/user/${project.userId}/${userName}/${project.id}/edit-project`
+                      );
+                    }}
+                  >
+                    Edit
+                  </button>
+                </div>
+                <div className="actions-section padding-top padding-bottom flex-end gap">
+                  <button
+                    className="button-style"
+                    type="button"
+                    onClick={() => handleDelete(project)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         );
       })}
-    </>
+    </div>
   );
 }
