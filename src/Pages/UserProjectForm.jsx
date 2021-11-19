@@ -130,7 +130,7 @@ export default function UserProjectForm({
           id="description"
           name="description"
           rows="3"
-          cols="50"
+          cols="45"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
