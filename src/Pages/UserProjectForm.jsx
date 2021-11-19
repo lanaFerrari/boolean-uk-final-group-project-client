@@ -107,58 +107,74 @@ export default function UserProjectForm({
   };
 
   return (
-    <form className="center form-stack light-shadow" onSubmit={handleSubmit}>
-      <h1>Add new project</h1>
-      <label htmlFor="title">Title:</label>
-      <input
-        id="title"
-        name="title"
-        type="text"
-        value={title}
-        required
-        onChange={(e) => setTitle(e.target.value)}
-      />
+    <div className="adding-height padding-top padding-bottom align-center">
+      <form
+        className="center form-stack light-shadow padding-form"
+        onSubmit={handleSubmit}
+      >
+        <h1 className="blue-color align-center">Add new project</h1>
+        <label htmlFor="title">Title:</label>
+        <input
+          className="input-box"
+          id="title"
+          name="title"
+          type="title"
+          value={title}
+          required
+          onChange={(e) => setTitle(e.target.value)}
+        />
 
-      <label htmlFor="description">Description:</label>
-      <textarea
-        id="description"
-        name="description"
-        rows="3"
-        cols="65"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      ></textarea>
+        <label htmlFor="description">Description:</label>
+        <textarea
+          className="input-box"
+          id="description"
+          name="description"
+          rows="3"
+          cols="50"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        ></textarea>
 
-      <label htmlFor="goal">Goal:</label>
-      <input
-        id="goal"
-        name="goal"
-        type="number"
-        min="0"
-        value={goal}
-        required
-        onChange={(e) => setGoal(e.target.value)}
-      />
+        <label htmlFor="goal">Goal:</label>
+        <input
+          className="input-box"
+          id="goal"
+          name="goal"
+          type="number"
+          min="0"
+          value={goal}
+          required
+          onChange={(e) => setGoal(e.target.value)}
+        />
 
-      <label htmlFor="categories">Categories:</label>
-      {categories.map((category, index) => {
-        return (
-          <div key={index}>
-            <input
-              type="checkbox"
-              name="categories"
-              value={category.id}
-              checked={projectCategoryIds.includes(category.id)}
-              onChange={handleCategoriesCheckbox}
-            />
-            <label htmlFor={category.name}>{category.name}</label>
-          </div>
-        );
-      })}
+        <label htmlFor="categories" className="padding-top">
+          Categories:
+        </label>
+        <div className="three-c-grid">
+          {categories.map((category, index) => {
+            return (
+              <div key={index}>
+                <input
+                  type="checkbox"
+                  name="categories"
+                  value={category.id}
+                  checked={projectCategoryIds.includes(category.id)}
+                  onChange={handleCategoriesCheckbox}
+                />
+                <label className="gap" htmlFor={category.name}>
+                  {category.name}
+                </label>
+              </div>
+            );
+          })}
+        </div>
 
-      <div className="actions-section">
-        <button type="submit">Create</button>
-      </div>
-    </form>
+        <div className="actions-section padding-top padding-bottom flex-end">
+          <button className="button-style" type="submit">
+            Create
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }

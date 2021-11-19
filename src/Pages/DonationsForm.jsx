@@ -54,21 +54,30 @@ export default function DonationsForm() {
     clearForm();
   };
   return (
-    <form className="" onSubmit={handleSubmit}>
-      <label htmlFor="amount-input">Amount: £</label>
-      <input
-        id="amount-input"
-        name="amount-input"
-        type="text"
-        onChange={handleDonationAmountInput}
-        value={amount}
-        required
-      />
-      <div className="actions-section">
-        <button className="" type="submit">
-          Donate
-        </button>
-      </div>
-    </form>
+    <div className="adding-height  align-center">
+      <form
+        className="center form-stack light-shadow padding-form"
+        onSubmit={handleSubmit}
+      >
+        <h1 className="padding-bottom blue-color align-center">
+          Make your donation
+        </h1>
+        <label htmlFor="amount-input">Amount: £</label>
+        <input
+          className="input-box"
+          id="amount-input"
+          name="amount-input"
+          type="amount-input"
+          onChange={handleDonationAmountInput}
+          value={amount}
+          required
+        />
+        <div className="actions-section padding-top padding-bottom flex-end">
+          <button className="button-style" type="submit">
+            Donate
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }

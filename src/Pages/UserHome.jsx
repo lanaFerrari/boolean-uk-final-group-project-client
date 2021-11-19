@@ -42,19 +42,21 @@ export default function UserHome() {
 
   return (
     <>
-      <h1>Hello, {targetUser.name}!</h1>
+      <div className="padding-top padding-bottom align-center">
+        <h1 className="blue-color">Hello, {targetUser.name}!</h1>
+      </div>
       <hr />
-      <>
+      <div className="adding-height padding-top padding-bottom three-c-grid align-center centering">
         <Link to={`/user/${targetId}/${userName}/myProjects`}>
-          <h2>My Projects</h2>
+          <h2 className="align-center">My Projects</h2>
         </Link>
         <Link to={`/user/${targetId}/${userName}/create-project`}>
-          <h2>Create Project</h2>
+          <h2 className="align-center">Create Project</h2>
         </Link>
         <Link to="/">
-          <h2>Donate</h2>
+          <h2 className="align-center">Donate</h2>
         </Link>
-      </>
+      </div>
     </>
   );
 }
