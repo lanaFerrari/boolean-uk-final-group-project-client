@@ -23,12 +23,7 @@ export default function Header({ searchInput, setSearchInput }) {
         </p>
       </div>
       <div>
-        <a
-          href="https://boolean.co.uk"
-          target="_blank"
-          rel="noreferrer"
-          className="align-center"
-        >
+        <a href="/" target="_parent" rel="noreferrer" className="align-center">
           <img
             src="https://boolean.co.uk/images/misc/logo.png"
             alt="Boolean"
