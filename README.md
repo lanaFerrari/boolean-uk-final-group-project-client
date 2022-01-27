@@ -1,6 +1,10 @@
 # Getting Started with Create React App
 
-Code for server side: https://github.com/vzaboraite/boolean-uk-final-group-project-server
+## Deployed Version: 
+https://laravi.herokuapp.com/
+
+## Server side:  
+https://github.com/vzaboraite/boolean-uk-final-group-project-server
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
